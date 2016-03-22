@@ -55,14 +55,14 @@ import org.geometerplus.fbreader.fbreader.ActionCode;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
 import org.geometerplus.fbreader.fbreader.options.CancelMenuHelper;
 import org.geometerplus.fbreader.formats.ExternalFormatPlugin;
-import org.geometerplus.fbreader.tips.TipsManager;
+//import org.geometerplus.fbreader.tips.TipsManager;
 
 import org.geometerplus.android.fbreader.api.*;
 import org.geometerplus.android.fbreader.formatPlugin.PluginUtil;
 import org.geometerplus.android.fbreader.httpd.DataService;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.sync.SyncOperations;
-import org.geometerplus.android.fbreader.tips.TipsActivity;
+
 
 import org.geometerplus.android.util.*;
 
@@ -189,7 +189,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 			public void run() {
 				runOnUiThread(new Runnable() {
 					public void run() {
-						new TipRunner().start();
+//						new TipRunner().start();
 						DictionaryUtil.init(FBReader.this, null);
 						final Intent intent = getIntent();
 						if (intent != null && FBReaderIntents.Action.PLUGIN.equals(intent.getAction())) {
@@ -477,33 +477,33 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 			null
 		);
 	}
-
-	private class TipRunner extends Thread {
-		TipRunner() {
-			setPriority(MIN_PRIORITY);
-		}
-
-		public void run() {
-			final TipsManager manager = TipsManager.Instance();
-			switch (manager.requiredAction()) {
-				case Initialize:
-					startActivity(new Intent(
-						TipsActivity.INITIALIZE_ACTION, null, FBReader.this, TipsActivity.class
-					));
-					break;
-				case Show:
-					startActivity(new Intent(
-						TipsActivity.SHOW_TIP_ACTION, null, FBReader.this, TipsActivity.class
-					));
-					break;
-				case Download:
-					manager.startDownloading();
-					break;
-				case None:
-					break;
-			}
-		}
-	}
+//
+//	private class TipRunner extends Thread {
+//		TipRunner() {
+//			setPriority(MIN_PRIORITY);
+//		}
+//
+//		public void run() {
+//			final TipsManager manager = TipsManager.Instance();
+//			switch (manager.requiredAction()) {
+//				case Initialize:
+//					startActivity(new Intent(
+//						TipsActivity.INITIALIZE_ACTION, null, FBReader.this, TipsActivity.class
+//					));
+//					break;
+//				case Show:
+//					startActivity(new Intent(
+//						TipsActivity.SHOW_TIP_ACTION, null, FBReader.this, TipsActivity.class
+//					));
+//					break;
+//				case Download:
+//					manager.startDownloading();
+//					break;
+//				case None:
+//					break;
+//			}
+//		}
+//	}
 
 	@Override
 	protected void onResume() {
