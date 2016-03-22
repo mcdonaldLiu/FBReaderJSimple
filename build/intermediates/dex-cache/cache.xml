@@ -6,84 +6,84 @@
         jumboMode="false"
         revision="21.1.2"
         sha1="36f95a7708086636806d7ed3e64f010855742bd2">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\httpmime-4.2.5_ae368eee5b9f3868b9a5df1105ea3ec735d703a7.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\httpmime-4.2.5_ae368eee5b9f3868b9a5df1105ea3ec735d703a7.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\com.android.support-support-v4-21.0.3_9a9c22511da1a87ecbe272a8b2a8eeb989aab09d.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\com.android.support-support-v4-21.0.3_9a9c22511da1a87ecbe272a8b2a8eeb989aab09d.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\libs\json-simple-1.1.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\json-simple-1.1.1_c42473609eb6d25ab34da43d7770d34ca35aef84.jar" />
-    </item>
-    <item
-        jar="E:\android\fb3\fBReaderJ\build\intermediates\exploded-aar\fb3\library\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="f1c1e1f8eb6fc3529ff6eef67ab6fe947108a4d3">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\fb3-library-unspecified_311735ec3ebdb23d521d9126e0a8eb389952f4ad.jar" />
-    </item>
-    <item
-        jar="D:\dev\android_sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\support-annotations-21.0.3_30a9d0fbd2e87fd115d207f1b09e91f312886f25.jar" />
-    </item>
-    <item
-        jar="E:\android\fb3\fBReaderJ\libs\nanohttpd-2.0.5.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c3d42a4f9a2203a2f31cbe5a303620db1593b952">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\nanohttpd-2.0.5_89e3a9594820db8d78f9d9a10ba68612507e450d.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\json-simple-1.1.1_c42473609eb6d25ab34da43d7770d34ca35aef84.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\libs\pdfparse.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a73e32b031244de43af228ee69a3a1c28011c62c">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\pdfparse_2d878879369497992a4ab17dde46d71371177e99.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\pdfparse_2d878879369497992a4ab17dde46d71371177e99.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\libs\LingvoIntegration_2.5.2.12.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="1f7b7852ec6e7567e6096d8ac7c14908c3047500">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\LingvoIntegration_2.5.2.12_71defe8a2014d81e8fadf81c539f7df1ace8ea45.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\LingvoIntegration_2.5.2.12_71defe8a2014d81e8fadf81c539f7df1ace8ea45.jar" />
+    </item>
+    <item
+        jar="E:\android\fb3\fBReaderJ\build\intermediates\exploded-aar\fb3\library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f1c1e1f8eb6fc3529ff6eef67ab6fe947108a4d3">
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\fb3-library-unspecified_311735ec3ebdb23d521d9126e0a8eb389952f4ad.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\internal_impl-21.0.3_da5c72339a128f1cfff4ceccbde68c5df7d5ffa6.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\internal_impl-21.0.3_da5c72339a128f1cfff4ceccbde68c5df7d5ffa6.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\build\intermediates\exploded-aar\fb3\code\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="71f2c2f6db1c68630b33d12ae1e35867967b21d7">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\fb3-code-unspecified_737a93bc38be32a92cb131766205ec2f18684d95.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\fb3-code-unspecified_737a93bc38be32a92cb131766205ec2f18684d95.jar" />
+    </item>
+    <item
+        jar="D:\dev\android_sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\support-annotations-21.0.3_30a9d0fbd2e87fd115d207f1b09e91f312886f25.jar" />
+    </item>
+    <item
+        jar="E:\android\fb3\fBReaderJ\libs\nanohttpd-2.0.5.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c3d42a4f9a2203a2f31cbe5a303620db1593b952">
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\nanohttpd-2.0.5_89e3a9594820db8d78f9d9a10ba68612507e450d.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\build\intermediates\exploded-aar\fb3\ambilWarna\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a129c591e9704939fac636849696cbc999ef973f">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\fb3-ambilWarna-unspecified_4e77a651d9421324524b620d5d8e316862926c40.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\fb3-ambilWarna-unspecified_4e77a651d9421324524b620d5d8e316862926c40.jar" />
     </item>
     <item
         jar="E:\android\fb3\fBReaderJ\libs\open-dictionary-api-1.2.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c4817fa5e7ad1f4fc0fcf4d2d81025356ea1b1b3">
-        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\debug\open-dictionary-api-1.2.1_ddf0063c1b9c462a122be8197e50127bd7c8e49f.jar" />
+        <dex dex="E:\android\fb3\fBReaderJ\build\intermediates\pre-dexed\release\open-dictionary-api-1.2.1_ddf0063c1b9c462a122be8197e50127bd7c8e49f.jar" />
     </item>
 
 </items>
