@@ -190,7 +190,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 				runOnUiThread(new Runnable() {
 					public void run() {
 //						new TipRunner().start();
-						DictionaryUtil.init(FBReader.this, null);
+//						DictionaryUtil.init(FBReader.this, null);
 						final Intent intent = getIntent();
 						if (intent != null && FBReaderIntents.Action.PLUGIN.equals(intent.getAction())) {
 							new RunPluginAction(FBReader.this, myFBReaderApp, intent.getData()).run();
