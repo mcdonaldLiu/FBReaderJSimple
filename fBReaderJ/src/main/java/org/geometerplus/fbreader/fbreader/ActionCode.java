@@ -85,6 +85,6 @@ public interface ActionCode {
 	String OPEN_VIDEO = "video";
 
 	String OPEN_START_SCREEN = "openStartScreen";
-	String OPEN_WEB_HELP = "help";
+//	String OPEN_WEB_HELP = "help";
 	String INSTALL_PLUGINS = "plugins";
 }
