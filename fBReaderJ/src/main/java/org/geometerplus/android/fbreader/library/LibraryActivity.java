@@ -162,7 +162,7 @@ public class LibraryActivity extends TreeActivity<LibraryTree> implements MenuIt
 	private interface ContextItemId {
 		int OpenBook              = 0;
 		int ShowBookInfo          = 1;
-		int ShareBook             = 2;
+//		int ShareBook             = 2;
 		int AddToFavorites        = 3;
 		int RemoveFromFavorites   = 4;
 		int MarkAsRead            = 5;
@@ -195,9 +195,9 @@ public class LibraryActivity extends TreeActivity<LibraryTree> implements MenuIt
 		menu.setHeaderTitle(book.getTitle());
 		menu.add(0, ContextItemId.OpenBook, 0, resource.getResource("openBook").getValue());
 		menu.add(0, ContextItemId.ShowBookInfo, 0, resource.getResource("showBookInfo").getValue());
-		if (book.File.getPhysicalFile() != null) {
-			menu.add(0, ContextItemId.ShareBook, 0, resource.getResource("shareBook").getValue());
-		}
+//		if (book.File.getPhysicalFile() != null) {
+//			menu.add(0, ContextItemId.ShareBook, 0, resource.getResource("shareBook").getValue());
+//		}
 		if (labels.contains(Book.FAVORITE_LABEL)) {
 			menu.add(0, ContextItemId.RemoveFromFavorites, 0, resource.getResource("removeFromFavorites").getValue());
 		} else {
@@ -244,9 +244,9 @@ public class LibraryActivity extends TreeActivity<LibraryTree> implements MenuIt
 			case ContextItemId.ShowBookInfo:
 				showBookInfo(book);
 				return true;
-			case ContextItemId.ShareBook:
-				FBUtil.shareBook(this, book);
-				return true;
+//			case ContextItemId.ShareBook:
+//				FBUtil.shareBook(this, book);
+//				return true;
 			case ContextItemId.AddToFavorites:
 				book.addLabel(Book.FAVORITE_LABEL);
 				myCollection.saveBook(book);
