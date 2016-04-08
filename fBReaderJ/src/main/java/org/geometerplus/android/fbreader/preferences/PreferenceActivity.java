@@ -713,7 +713,7 @@ public class PreferenceActivity extends ZLPreferenceActivity {
 		final CancelMenuHelper cancelMenuHelper = new CancelMenuHelper();
 		final Screen cancelMenuScreen = createPreferenceScreen("cancelMenu");
 		cancelMenuScreen.addOption(cancelMenuHelper.ShowLibraryItemOption, "library");
-		cancelMenuScreen.addOption(cancelMenuHelper.ShowNetworkLibraryItemOption, "networkLibrary");
+//		cancelMenuScreen.addOption(cancelMenuHelper.ShowNetworkLibraryItemOption, "networkLibrary");
 		cancelMenuScreen.addOption(cancelMenuHelper.ShowPreviousBookItemOption, "previousBook");
 		cancelMenuScreen.addOption(cancelMenuHelper.ShowPositionItemsOption, "positions");
 		final String[] backKeyAndBackKeyLongPressActions = {
