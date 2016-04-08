@@ -61,7 +61,7 @@ import org.geometerplus.android.fbreader.api.*;
 import org.geometerplus.android.fbreader.formatPlugin.PluginUtil;
 import org.geometerplus.android.fbreader.httpd.DataService;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
-import org.geometerplus.android.fbreader.sync.SyncOperations;
+//import org.geometerplus.android.fbreader.sync.SyncOperations;
 
 
 import org.geometerplus.android.util.*;
@@ -267,7 +267,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 		myFBReaderApp.addAction(ActionCode.SHOW_BOOK_INFO, new ShowBookInfoAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.SHOW_TOC, new ShowTOCAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.SHOW_BOOKMARKS, new ShowBookmarksAction(this, myFBReaderApp));
-		myFBReaderApp.addAction(ActionCode.SHOW_NETWORK_LIBRARY, new ShowNetworkLibraryAction(this, myFBReaderApp));
+//		myFBReaderApp.addAction(ActionCode.SHOW_NETWORK_LIBRARY, new ShowNetworkLibraryAction(this, myFBReaderApp));
 
 		myFBReaderApp.addAction(ActionCode.SHOW_MENU, new ShowMenuAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.SHOW_NAVIGATION, new ShowNavigationAction(this, myFBReaderApp));
@@ -288,7 +288,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 		myFBReaderApp.addAction(ActionCode.SHOW_CANCEL_MENU, new ShowCancelMenuAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.GO_TO_PREFERENCES, new ShowPreferencesAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.GO_TO_LIBRARY, new ShowLibraryAction(this, myFBReaderApp));
-		myFBReaderApp.addAction(ActionCode.GO_TO_NETWORK_LIBRARY, new ShowNetworkLibraryAction(this, myFBReaderApp));
+//		myFBReaderApp.addAction(ActionCode.GO_TO_NETWORK_LIBRARY, new ShowNetworkLibraryAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.GO_TO_PREVIOUS_BOOK, new GoToPreviousBookAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.OPEN_START_SCREEN, new StartScreenAction(this, myFBReaderApp));
 
@@ -512,7 +512,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 		myStartTimer = true;
 		Config.Instance().runOnConnect(new Runnable() {
 			public void run() {
-				SyncOperations.enableSync(FBReader.this, myFBReaderApp.SyncOptions);
+//				SyncOperations.enableSync(FBReader.this, myFBReaderApp.SyncOptions);
 
 				final int brightnessLevel =
 					getZLibrary().ScreenBrightnessLevelOption.getValue();
@@ -546,7 +546,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 			action.run();
 		}
 
-		registerReceiver(mySyncUpdateReceiver, new IntentFilter(SyncOperations.UPDATED));
+//		registerReceiver(mySyncUpdateReceiver, new IntentFilter(SyncOperations.UPDATED));
 
 		SetScreenOrientationAction.setOrientation(this, ZLibrary.Instance().getOrientationOption().getValue());
 		if (myCancelIntent != null) {
@@ -592,7 +592,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 
 	@Override
 	protected void onPause() {
-		SyncOperations.quickSync(this, myFBReaderApp.SyncOptions);
+//		SyncOperations.quickSync(this, myFBReaderApp.SyncOptions);
 
 		IsPaused = true;
 		try {

@@ -29,7 +29,7 @@ import org.geometerplus.fbreader.network.INetworkLink;
 import org.geometerplus.fbreader.network.atom.ATOMLink;
 import org.geometerplus.fbreader.network.authentication.NetworkAuthenticationManager;
 import org.geometerplus.fbreader.network.authentication.litres.LitResAuthenticationManager;
-import org.geometerplus.fbreader.network.rss.RSSNetworkLink;
+//import org.geometerplus.fbreader.network.rss.RSSNetworkLink;
 import org.geometerplus.fbreader.network.urlInfo.*;
 
 class OPDSLinkXMLReader extends OPDSXMLReader implements OPDSConstants {
@@ -163,16 +163,17 @@ class OPDSLinkXMLReader extends OPDSXMLReader implements OPDSConstants {
 					);
 				}
 				return opdsLink;
-			} else if (MimeType.APP_RSS_XML.weakEquals(catalogInfo.Mime)) {
-				return new RSSNetworkLink(
-					OPDSNetworkLink.INVALID_ID,
-					id,
-					titleString,
-					summaryString,
-					language,
-					infos
-				);
-			} else {
+//			} else if (MimeType.APP_RSS_XML.weakEquals(catalogInfo.Mime)) {
+//				return new RSSNetworkLink(
+//					OPDSNetworkLink.INVALID_ID,
+//					id,
+//					titleString,
+//					summaryString,
+//					language,
+//					infos
+//				);
+			}
+else {
 				return null;
 			}
 		}

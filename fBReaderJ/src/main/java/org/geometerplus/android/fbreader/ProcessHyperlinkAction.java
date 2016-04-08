@@ -31,7 +31,7 @@ import org.geometerplus.fbreader.bookmodel.FBHyperlinkType;
 import org.geometerplus.fbreader.network.NetworkLibrary;
 
 import org.geometerplus.android.fbreader.network.*;
-import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;
+//import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;
 import org.geometerplus.android.fbreader.image.ImageViewActivity;
 import org.geometerplus.android.util.UIUtil;
 
@@ -92,38 +92,38 @@ class ProcessHyperlinkAction extends FBAndroidAction {
 	}
 
 	private void openInBrowser(final String url) {
-		final Intent intent = new Intent(Intent.ACTION_VIEW);
-		final boolean externalUrl;
-		if (BookDownloader.acceptsUri(Uri.parse(url))) {
-			intent.setClass(BaseActivity, BookDownloader.class);
-			intent.putExtra(BookDownloaderService.Key.SHOW_NOTIFICATIONS, BookDownloaderService.Notifications.ALL);
-			externalUrl = false;
-		} else {
-			externalUrl = true;
-		}
-		final NetworkLibrary nLibrary = NetworkLibrary.Instance();
-		new Thread(new Runnable() {
-			public void run() {
-				if (!url.startsWith("fbreader-action:")) {
-					try {
-						nLibrary.initialize(new ActivityNetworkContext(BaseActivity));
-					} catch (ZLNetworkException e) {
-						e.printStackTrace();
-						UIUtil.showMessageText(BaseActivity, e.getMessage());
-						return;
-					}
-				}
-				intent.setData(Util.rewriteUri(Uri.parse(nLibrary.rewriteUrl(url, externalUrl))));
-				BaseActivity.runOnUiThread(new Runnable() {
-					public void run() {
-						try {
-							OrientationUtil.startActivity(BaseActivity, intent);
-						} catch (ActivityNotFoundException e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		}).start();
+//		final Intent intent = new Intent(Intent.ACTION_VIEW);
+//		final boolean externalUrl;
+//		if (BookDownloader.acceptsUri(Uri.parse(url))) {
+//			intent.setClass(BaseActivity, BookDownloader.class);
+//			intent.putExtra(BookDownloaderService.Key.SHOW_NOTIFICATIONS, BookDownloaderService.Notifications.ALL);
+//			externalUrl = false;
+//		} else {
+//			externalUrl = true;
+//		}
+//		final NetworkLibrary nLibrary = NetworkLibrary.Instance();
+//		new Thread(new Runnable() {
+//			public void run() {
+//				if (!url.startsWith("fbreader-action:")) {
+//					try {
+//						nLibrary.initialize(new ActivityNetworkContext(BaseActivity));
+//					} catch (ZLNetworkException e) {
+//						e.printStackTrace();
+//						UIUtil.showMessageText(BaseActivity, e.getMessage());
+//						return;
+//					}
+//				}
+//				intent.setData(Util.rewriteUri(Uri.parse(nLibrary.rewriteUrl(url, externalUrl))));
+//				BaseActivity.runOnUiThread(new Runnable() {
+//					public void run() {
+//						try {
+//							OrientationUtil.startActivity(BaseActivity, intent);
+//						} catch (ActivityNotFoundException e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				});
+//			}
+//		}).start();
 	}
 }
