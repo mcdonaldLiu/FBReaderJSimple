@@ -28,7 +28,7 @@ import org.geometerplus.zlibrary.text.view.*;
 
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
 import org.geometerplus.fbreader.bookmodel.FBHyperlinkType;
-import org.geometerplus.fbreader.network.NetworkLibrary;
+//import org.geometerplus.fbreader.network.NetworkLibrary;
 
 import org.geometerplus.android.fbreader.network.*;
 //import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;

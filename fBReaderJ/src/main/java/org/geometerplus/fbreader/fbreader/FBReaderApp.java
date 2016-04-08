@@ -35,16 +35,16 @@ import org.geometerplus.fbreader.bookmodel.*;
 import org.geometerplus.fbreader.fbreader.options.*;
 import org.geometerplus.fbreader.formats.ExternalFormatPlugin;
 import org.geometerplus.fbreader.formats.FormatPlugin;
-import org.geometerplus.fbreader.network.sync.SyncData;
+//import org.geometerplus.fbreader.network.sync.SyncData;
 
 public final class FBReaderApp extends ZLApplication {
 	public interface ExternalFileOpener {
 		public void openFile(ExternalFormatPlugin plugin, Book book, Bookmark bookmark);
 	}
 
-	public static interface Notifier {
-		void showMissingBookNotification(SyncData.ServerBookInfo info);
-	}
+//	public static interface Notifier {
+//		void showMissingBookNotification(SyncData.ServerBookInfo info);
+//	}
 
 	private ExternalFileOpener myExternalFileOpener;
 
@@ -72,7 +72,7 @@ public final class FBReaderApp extends ZLApplication {
 
 	public final IBookCollection Collection;
 
-	private SyncData mySyncData = new SyncData();
+//	private SyncData mySyncData = new SyncData();
 
 	public FBReaderApp(IBookCollection collection) {
 		Collection = collection;
@@ -138,28 +138,29 @@ public final class FBReaderApp extends ZLApplication {
 	}
 
 	public void openHelpBook() {
-		openBook(Collection.getBookByFile(BookUtil.getHelpFile()), null, null, null);
+		openBook(Collection.getBookByFile(BookUtil.getHelpFile()), null, null);
 	}
+//
+//	public Book getCurrentServerBook(Notifier notifier) {
+//		final SyncData.ServerBookInfo info = mySyncData.getServerBookInfo();
+//		if (info == null) {
+//			return null;
+//		}
+//
+//		for (String hash : info.Hashes) {
+//			final Book book = Collection.getBookByHash(hash);
+//			if (book != null) {
+//				return book;
+//			}
+//		}
+//		if (notifier != null) {
+//			notifier.showMissingBookNotification(info);
+//		}
+//		return null;
+//	}
 
-	public Book getCurrentServerBook(Notifier notifier) {
-		final SyncData.ServerBookInfo info = mySyncData.getServerBookInfo();
-		if (info == null) {
-			return null;
-		}
-
-		for (String hash : info.Hashes) {
-			final Book book = Collection.getBookByHash(hash);
-			if (book != null) {
-				return book;
-			}
-		}
-		if (notifier != null) {
-			notifier.showMissingBookNotification(info);
-		}
-		return null;
-	}
-
-	public void openBook(Book book, final Bookmark bookmark, Runnable postAction, Notifier notifier) {
+//	public void openBook(Book book, final Bookmark bookmark, Runnable postAction, Notifier notifier) {
+		public void openBook(Book book, final Bookmark bookmark, Runnable postAction) {
 		if (Model != null) {
 			if (book == null || bookmark == null && book.File.equals(Model.Book.File)) {
 				return;
@@ -167,7 +168,7 @@ public final class FBReaderApp extends ZLApplication {
 		}
 
 		if (book == null) {
-			book = getCurrentServerBook(notifier);
+//			book = getCurrentServerBook(notifier);
 			if (book == null) {
 				book = Collection.getRecentBook(0);
 			}
@@ -316,7 +317,8 @@ public final class FBReaderApp extends ZLApplication {
 			if (bookmark != null) {
 				bm = bookmark;
 			} else {
-				ZLTextPosition pos = getStoredPosition(book);
+//				ZLTextPosition pos = getStoredPosition(book);
+				ZLTextPosition pos = null;
 				if (pos == null) {
 					pos = new ZLTextFixedPosition(0, 0, 0);
 				}
@@ -489,29 +491,29 @@ public final class FBReaderApp extends ZLApplication {
 		}
 	}
 
-	public void useSyncInfo(boolean openOtherBook, Notifier notifier) {
-		if (openOtherBook && SyncOptions.ChangeCurrentBook.getValue()) {
-			final Book fromServer = getCurrentServerBook(notifier);
-			if (fromServer != null && !fromServer.equals(Collection.getRecentBook(0))) {
-				openBook(fromServer, null, null, notifier);
-				return;
-			}
-		}
-
-		if (myStoredPositionBook != null &&
-			mySyncData.hasPosition(Collection.getHash(myStoredPositionBook, true))) {
-			gotoStoredPosition();
-			storePosition();
-		}
-	}
+//	public void useSyncInfo(boolean openOtherBook, Notifier notifier) {
+//		if (openOtherBook && SyncOptions.ChangeCurrentBook.getValue()) {
+//			final Book fromServer = getCurrentServerBook(notifier);
+//			if (fromServer != null && !fromServer.equals(Collection.getRecentBook(0))) {
+//				openBook(fromServer, null, null, notifier);
+//				return;
+//			}
+//		}
+//
+//		if (myStoredPositionBook != null &&
+//			mySyncData.hasPosition(Collection.getHash(myStoredPositionBook, true))) {
+//			gotoStoredPosition();
+//			storePosition();
+//		}
+//	}
 
 	private final SaverThread mySaverThread = new SaverThread();
 	private volatile ZLTextPosition myStoredPosition;
 	private volatile Book myStoredPositionBook;
 
 	private ZLTextFixedPosition getStoredPosition(Book book) {
-		final ZLTextFixedPosition.WithTimestamp fromServer =
-			mySyncData.getAndCleanPosition(Collection.getHash(book, true));
+		final ZLTextFixedPosition.WithTimestamp fromServer = null;
+//			mySyncData.getAndCleanPosition(Collection.getHash(book, true));
 		final ZLTextFixedPosition.WithTimestamp local =
 			Collection.getStoredPosition(book.getId());
 
@@ -567,9 +569,9 @@ public final class FBReaderApp extends ZLApplication {
 			case networkLibrary:
 				runAction(ActionCode.SHOW_NETWORK_LIBRARY);
 				break;
-			case previousBook:
-				openBook(Collection.getRecentBook(1), null, null, null);
-				break;
+//			case previousBook:
+//				openBook(Collection.getRecentBook(1), null, null, null);
+//				break;
 			case returnTo:
 				Collection.deleteBookmark(bookmark);
 				gotoBookmark(bookmark, true);

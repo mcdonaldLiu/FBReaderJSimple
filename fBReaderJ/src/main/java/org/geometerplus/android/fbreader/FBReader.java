@@ -106,7 +106,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 	private Intent myCancelIntent = null;
 	private Intent myOpenBookIntent = null;
 
-	private final FBReaderApp.Notifier myNotifier = new AppNotifier(this);
+//	private final FBReaderApp.Notifier myNotifier = new AppNotifier(this);
 
 	private static final String PLUGIN_ACTION_PREFIX = "___";
 	private final List<PluginApi.ActionInfo> myPluginActions =
@@ -159,7 +159,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 		}
 		Config.Instance().runOnConnect(new Runnable() {
 			public void run() {
-				myFBReaderApp.openBook(myBook, bookmark, action, myNotifier);
+				myFBReaderApp.openBook(myBook, bookmark, action);
 				AndroidFontUtil.clearFontCache();
 			}
 		});
@@ -281,7 +281,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 		myFBReaderApp.addAction(ActionCode.SELECTION_TRANSLATE, new SelectionTranslateAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.SELECTION_BOOKMARK, new SelectionBookmarkAction(this, myFBReaderApp));
 
-		myFBReaderApp.addAction(ActionCode.DISPLAY_BOOK_POPUP, new DisplayBookPopupAction(this, myFBReaderApp));
+//		myFBReaderApp.addAction(ActionCode.DISPLAY_BOOK_POPUP, new DisplayBookPopupAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.PROCESS_HYPERLINK, new ProcessHyperlinkAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.OPEN_VIDEO, new OpenVideoAction(this, myFBReaderApp));
 
@@ -316,7 +316,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 				myOpenBookIntent = null;
 				getCollection().bindToService(this, new Runnable() {
 					public void run() {
-						myFBReaderApp.openBook(null, null, null, myNotifier);
+						myFBReaderApp.openBook(null, null, null);
 					}
 				});
 			}
@@ -403,7 +403,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 					if (b.equals(book)) {
 						b = myFBReaderApp.Collection.getRecentBook(1);
 					}
-					myFBReaderApp.openBook(b, null, null, myNotifier);
+					myFBReaderApp.openBook(b, null, null);
 				}
 			});
 		} else {
@@ -566,25 +566,26 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 					openBook(intent, null, true);
 				}
 			});
-		} else if (myFBReaderApp.getCurrentServerBook(null) != null) {
-			getCollection().bindToService(this, new Runnable() {
-				public void run() {
-					myFBReaderApp.useSyncInfo(true, myNotifier);
-				}
-			});
-		} else if (myFBReaderApp.Model == null && myFBReaderApp.ExternalBook != null) {
-			getCollection().bindToService(this, new Runnable() {
-				public void run() {
-					myFBReaderApp.openBook(myFBReaderApp.ExternalBook, null, null, myNotifier);
-				}
-			});
-		} else {
-			getCollection().bindToService(this, new Runnable() {
-				public void run() {
-					myFBReaderApp.useSyncInfo(true, myNotifier);
-				}
-			});
 		}
+//		else if (myFBReaderApp.getCurrentServerBook(null) != null) {
+//			getCollection().bindToService(this, new Runnable() {
+//				public void run() {
+//					myFBReaderApp.useSyncInfo(true, myNotifier);
+//				}
+//			});
+//		} else if (myFBReaderApp.Model == null && myFBReaderApp.ExternalBook != null) {
+//			getCollection().bindToService(this, new Runnable() {
+//				public void run() {
+//					myFBReaderApp.openBook(myFBReaderApp.ExternalBook, null, null, myNotifier);
+//				}
+//			});
+//		} else {
+//			getCollection().bindToService(this, new Runnable() {
+//				public void run() {
+//					myFBReaderApp.useSyncInfo(true, myNotifier);
+//				}
+//			});
+//		}
 
 		PopupPanel.restoreVisibilities(myFBReaderApp);
 		ApiServerImplementation.sendEvent(this, ApiListener.EVENT_READ_MODE_OPENED);
@@ -812,7 +813,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 			public void run() {
 				final Book recent = getCollection().getRecentBook(0);
 				if (recent != null && !recent.equals(book)) {
-					myFBReaderApp.openBook(recent, null, null, null);
+					myFBReaderApp.openBook(recent, null, null);
 				} else {
 					myFBReaderApp.openHelpBook();
 				}
@@ -1043,7 +1044,7 @@ public final class FBReader extends Activity implements ZLApplicationWindow {
 
 	private BroadcastReceiver mySyncUpdateReceiver = new BroadcastReceiver() {
 		public void onReceive(Context context, Intent intent) {
-			myFBReaderApp.useSyncInfo(myResumeTimestamp + 10 * 1000 > System.currentTimeMillis(), myNotifier);
+//			myFBReaderApp.useSyncInfo(myResumeTimestamp + 10 * 1000 > System.currentTimeMillis(), myNotifier);
 		}
 	};
 }

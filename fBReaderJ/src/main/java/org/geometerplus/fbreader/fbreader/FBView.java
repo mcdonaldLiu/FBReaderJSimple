@@ -40,13 +40,13 @@ import org.geometerplus.fbreader.fbreader.options.*;
 public final class FBView extends ZLTextView {
 	private final FBReaderApp myReader;
 	private final ViewOptions myViewOptions;
-	private final BookElementManager myBookElementManager;
+//	private final BookElementManager myBookElementManager;
 
 	FBView(FBReaderApp reader) {
 		super(reader);
 		myReader = reader;
 		myViewOptions = reader.ViewOptions;
-		myBookElementManager = new BookElementManager(this);
+//		myBookElementManager = new BookElementManager(this);
 	}
 
 	public void setModel(ZLTextModel model) {
@@ -788,6 +788,7 @@ public final class FBView extends ZLTextView {
 
 	@Override
 	protected ExtensionElementManager getExtensionManager() {
-		return myBookElementManager;
+		return null;
+//		return myBookElementManager;
 	}
 }
