@@ -109,7 +109,7 @@ public final class ZLTextParagraphCursor {
 						elements.add(new ZLTextVideoElement(it.getVideoEntry().sources()));
 						break;
 					case ZLTextParagraph.Entry.EXTENSION:
-						elements.addAll(myView.getExtensionManager().getElements(it.getExtensionEntry()));
+//						elements.addAll(myView.getExtensionManager().getElements(it.getExtensionEntry()));
 						break;
 					case ZLTextParagraph.Entry.STYLE_CSS:
 					case ZLTextParagraph.Entry.STYLE_OTHER:
