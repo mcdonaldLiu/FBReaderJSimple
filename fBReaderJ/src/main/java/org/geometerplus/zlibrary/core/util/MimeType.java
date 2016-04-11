@@ -137,9 +137,9 @@ public final class MimeType {
 	// ???
 	public static final MimeType IMAGE_PALM = get("image/palm");
 	// http://www.iana.org/assignments/media-types/image/index.html
-	public static final MimeType IMAGE_VND_DJVU = get("image/vnd.djvu");
+//	public static final MimeType IMAGE_VND_DJVU = get("image/vnd.djvu");
 	// ???
-	public static final MimeType IMAGE_XDJVU = get("image/x-djvu");
+//	public static final MimeType IMAGE_XDJVU = get("image/x-djvu");
 
 	// video
 	public static final MimeType VIDEO_MP4 = get("video/mp4");
@@ -166,8 +166,8 @@ public final class MimeType {
 		 = Arrays.asList(TEXT_HTML, APP_HTML, APP_HTMLHTM);
 	public static final List<MimeType> TYPES_PDF
 		 = Arrays.asList(APP_PDF);
-	public static final List<MimeType> TYPES_DJVU
-		 = Arrays.asList(IMAGE_VND_DJVU, IMAGE_XDJVU, APP_DJVU);
+//	public static final List<MimeType> TYPES_DJVU
+//		 = Arrays.asList(IMAGE_VND_DJVU, IMAGE_XDJVU, APP_DJVU);
 	public static final List<MimeType> TYPES_COMIC_BOOK
 		 = Arrays.asList(APP_CBZ, APP_CBR);
 	public static final List<MimeType> TYPES_DOC
