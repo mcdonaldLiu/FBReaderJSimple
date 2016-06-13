@@ -23,6 +23,8 @@
 #include "../util/MiscUtil.h"
 #include "../util/EntityFilesCollector.h"
 
+#include "../zlibrary/core/src/logger/ZLLogger.h"
+
 NCXReader::NCXReader(BookReader &modelReader) : myModelReader(modelReader), myReadState(READ_NONE), myPlayIndex(-65535) {
 }
 
@@ -33,6 +35,7 @@ static const std::string TAG_CONTENT = "content";
 static const std::string TAG_TEXT = "text";
 
 void NCXReader::startElementHandler(const char *fullTag, const char **attributes) {
+	ZLLogger::Instance().print("classname", "message#######################");
 	std::string tag = fullTag;
 	const std::size_t index = tag.rfind(':');
 	if (index != std::string::npos) {

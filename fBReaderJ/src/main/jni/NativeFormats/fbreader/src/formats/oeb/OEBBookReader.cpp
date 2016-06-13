@@ -37,6 +37,8 @@
 #include "../util/MiscUtil.h"
 #include "../../bookmodel/BookModel.h"
 
+#include <android/log.h>
+
 OEBBookReader::OEBBookReader(BookModel &model) : myModelReader(model) {
 }
 
@@ -216,7 +218,7 @@ bool OEBBookReader::readBook(const ZLFile &opfFile) {
 	myModelReader.setMainTextModel();
 	myModelReader.pushKind(REGULAR);
 
-	//ZLLogger::Instance().registerClass("oeb");
+	ZLLogger::Instance().registerClass("oeb");
 	XHTMLReader xhtmlReader(myModelReader, myEncryptionMap);
 	for (std::vector<std::string>::const_iterator it = myHtmlFileNames.begin(); it != myHtmlFileNames.end(); ++it) {
 		const ZLFile xhtmlFile(myFilePrefix + *it);
@@ -233,13 +235,16 @@ bool OEBBookReader::readBook(const ZLFile &opfFile) {
 		} else {
 			myModelReader.insertEndOfSectionParagraph();
 		}
-		//ZLLogger::Instance().println("oeb", "start " + xhtmlFile.path());
+		ZLLogger::Instance().println("oeb", "start " + xhtmlFile.path());
 		if (!xhtmlReader.readFile(xhtmlFile, *it)) {
 			if (opfFile.exists() && !myEncryptionMap.isNull()) {
 				myModelReader.insertEncryptedSectionParagraph();
 			}
 		}
-		//ZLLogger::Instance().println("oeb", "end " + xhtmlFile.path());
+		ZLLogger::Instance().println("oeb", "end " + xhtmlFile.path());
+		ZLLogger::Instance().registerClass("CNKI_TEST");
+		ZLLogger::Instance().println("CNKI_TEST", "CNKI_TEST测试");
+        __android_log_print(ANDROID_LOG_INFO, "MyTag", "this is %d", 1001);
 		//std::string debug = "para count = ";
 		//ZLStringUtil::appendNumber(debug, myModelReader.model().bookTextModel()->paragraphsNumber());
 		//ZLLogger::Instance().println("oeb", debug);

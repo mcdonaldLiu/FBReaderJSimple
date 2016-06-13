@@ -19,8 +19,11 @@
 
 package org.geometerplus.fbreader.fbreader;
 
+import android.util.Log;
+
 import java.util.*;
 
+import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.zlibrary.core.application.*;
 import org.geometerplus.zlibrary.core.drm.FileEncryptionInfo;
 import org.geometerplus.zlibrary.core.drm.EncryptionMethod;
@@ -74,6 +77,7 @@ public final class FBReaderApp extends ZLApplication {
 
 //	private SyncData mySyncData = new SyncData();
 
+	private static final String TAG = "FBReaderApp";
 	public FBReaderApp(IBookCollection collection) {
 		Collection = collection;
 
@@ -287,6 +291,17 @@ public final class FBReaderApp extends ZLApplication {
 	}
 
 	private synchronized void openBookInternal(Book book, Bookmark bookmark, boolean force) {
+
+		//cnki
+//		book.checkDrm();
+//		if(book.bookIsOk() == false){
+////			FBReader.MessageBoxAndFinish(book.getRightsErrorCode());
+//			StringBuffer sb = new StringBuffer(book.getRightsErrorCode());
+//			Log.d(TAG, "book.getRightsErrorCode" +  sb.toString());
+//			return;
+//		}
+
+		force = true;
 		if (!force && Model != null && book.equals(Model.Book)) {
 			if (bookmark != null) {
 				gotoBookmark(bookmark, false);
@@ -359,6 +374,8 @@ public final class FBReaderApp extends ZLApplication {
 		getViewWidget().reset();
 		getViewWidget().repaint();
 
+
+//
 		try {
 			for (FileEncryptionInfo info : book.getPlugin().readEncryptionInfos(book)) {
 				if (info != null && !EncryptionMethod.isSupported(info.Method)) {
@@ -443,7 +460,12 @@ public final class FBReaderApp extends ZLApplication {
 	}
 
 	public void onWindowClosing() {
-		storePosition();
+		if (Model != null && BookTextView != null) {
+			storePosition();
+			Model.Book.close();
+			Model = null;
+		}
+
 	}
 
 	private class PositionSaver implements Runnable {

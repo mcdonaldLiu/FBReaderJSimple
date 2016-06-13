@@ -24,7 +24,7 @@ import java.util.*;
 
 import org.amse.ys.zip.*;
 
-final class ZLZipEntryFile extends ZLArchiveEntryFile {
+public final class ZLZipEntryFile extends ZLArchiveEntryFile {
 	static List<ZLFile> archiveEntries(ZLFile archive) {
 		try {
 			final ZipFile zf = ZLZipEntryFile.getZipFile(archive);
@@ -43,7 +43,7 @@ final class ZLZipEntryFile extends ZLArchiveEntryFile {
 
 	private static HashMap<ZLFile,ZipFile> ourZipFileMap = new HashMap<ZLFile,ZipFile>();
 
-	private static ZipFile getZipFile(final ZLFile file) throws IOException {
+	public static ZipFile getZipFile(final ZLFile file) throws IOException {
 		synchronized (ourZipFileMap) {
 			ZipFile zf = file.isCached() ? ourZipFileMap.get(file) : null;
 			if (zf == null) {

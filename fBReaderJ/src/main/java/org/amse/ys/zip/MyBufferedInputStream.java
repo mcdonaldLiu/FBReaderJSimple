@@ -1,5 +1,7 @@
 package org.amse.ys.zip;
 
+import com.cnki.android.cajreader.ReaderExLib;
+
 import java.io.*;
 
 import org.geometerplus.zlibrary.core.util.InputStreamHolder;
@@ -7,7 +9,7 @@ import org.geometerplus.zlibrary.core.util.InputStreamHolder;
 final class MyBufferedInputStream extends InputStream {
 	private final InputStreamHolder myStreamHolder;
 	private InputStream myFileInputStream;
-	private final byte[] myBuffer;
+	private  byte[] myBuffer;
 	int myBytesReady;
 	int myPositionInBuffer;
 	private int myCurrentPosition;
@@ -24,6 +26,18 @@ final class MyBufferedInputStream extends InputStream {
 		this(streamHolder, 1 << 10);
 	}
 
+	public void setDecryptHandle(LocalFileHeader header) {
+		if (header.Handle != 0) {
+			myBuffer = new byte[header.CompressedSize];
+			try {
+				myBytesReady = myFileInputStream.read(myBuffer);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			ReaderExLib.RightsDecryptData(header.Handle, myBuffer);
+			myPositionInBuffer = 0;
+		}
+	}
 	@Override
 	public int available() throws IOException {
 		return (myFileInputStream.available() + myBytesReady);

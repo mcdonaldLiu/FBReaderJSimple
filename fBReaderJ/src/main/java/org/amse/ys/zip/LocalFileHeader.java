@@ -25,6 +25,7 @@ public class LocalFileHeader {
 	int UncompressedSize;
 	int NameLength;
 	int ExtraLength;
+	public int Handle = 0;
 
 	public String FileName;
 	int DataOffset;

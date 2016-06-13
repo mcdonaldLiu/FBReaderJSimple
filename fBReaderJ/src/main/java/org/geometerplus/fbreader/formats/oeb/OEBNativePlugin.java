@@ -19,9 +19,15 @@
 
 package org.geometerplus.fbreader.formats.oeb;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.amse.ys.zip.LocalFileHeader;
+import org.amse.ys.zip.ZipFile;
 import org.geometerplus.zlibrary.core.encodings.EncodingCollection;
 import org.geometerplus.zlibrary.core.encodings.AutoEncodingCollection;
 import org.geometerplus.zlibrary.core.filesystem.ZLFile;
@@ -30,6 +36,9 @@ import org.geometerplus.fbreader.book.Book;
 import org.geometerplus.fbreader.bookmodel.BookModel;
 import org.geometerplus.fbreader.bookmodel.BookReadingException;
 import org.geometerplus.fbreader.formats.NativeFormatPlugin;
+
+import org.geometerplus.zlibrary.core.filesystem.ZLZipEntryFile;
+import com.cnki.android.cajreader.ReaderExLib;
 
 public class OEBNativePlugin extends NativeFormatPlugin {
 	public OEBNativePlugin() {
@@ -102,5 +111,82 @@ public class OEBNativePlugin extends NativeFormatPlugin {
 	@Override
 	public int priority() {
 		return 0;
+	}
+
+
+	private void setRightsHandle(Book book, int handle) {
+		try{
+	//		final ZipFile zf = book.File.getZipFile();
+			final ZipFile zf = ZLZipEntryFile.getZipFile(book.File);
+			if (zf != null) {
+				final Collection<LocalFileHeader> headers = zf.headers();
+				if (!headers.isEmpty()) {
+					for (LocalFileHeader h : headers) {
+						if (h.FileName.endsWith("html") ||
+								h.FileName.endsWith("htm")) {
+							h.Handle = handle;
+						}
+					}
+				}
+			}
+		}
+		catch (IOException e)
+		{
+
+		}
+	}
+
+	public boolean getRightsFile( Book book) {
+		final ZLFile rightsFile = ZLFile.createFile(book.File, "META-INF/rights.xml");
+		InputStream stream = null;
+		try {
+			stream = rightsFile.getInputStream();
+			if (stream == null) {
+				return false;
+			}
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			byte buf[] = new byte[1024];
+			int numread;
+			while ((numread = stream.read(buf)) != -1) {
+				output.write(buf, 0, numread);
+			}
+			stream.close();
+			byte[] rights = output.toByteArray();
+			int handle = ReaderExLib.DecryptRights(rights);
+			if (handle == 0)
+				return false;
+			book.setRightsHandle(handle);
+			setRightsHandle(book, handle);
+
+		} catch (IOException e) {
+		}
+		return true;
+	}
+
+	public boolean getHtmlFile( Book book) {
+		final ZLFile rightsFile = ZLFile.createFile(book.File, "OEBPS/page0001.html");
+		InputStream stream = null;
+		try {
+			stream = rightsFile.getInputStream();
+			if (stream == null) {
+				return false;
+			}
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			byte buf[] = new byte[1024];
+			int numread;
+			while ((numread = stream.read(buf)) != -1) {
+				output.write(buf, 0, numread);
+			}
+			stream.close();
+			byte[] rights = output.toByteArray();
+			int handle = ReaderExLib.DecryptRights(rights);
+			if (handle == 0)
+				return false;
+			book.setRightsHandle(handle);
+			setRightsHandle(book, handle);
+
+		} catch (IOException e) {
+		}
+		return true;
 	}
 }

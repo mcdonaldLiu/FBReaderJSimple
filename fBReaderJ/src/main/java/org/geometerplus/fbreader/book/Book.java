@@ -19,9 +19,12 @@
 
 package org.geometerplus.fbreader.book;
 
+import com.cnki.android.cajreader.ReaderExLib;
+
 import java.math.BigDecimal;
 import java.util.*;
 
+import org.geometerplus.fbreader.formats.oeb.OEBNativePlugin;
 import org.geometerplus.zlibrary.core.filesystem.*;
 import org.geometerplus.zlibrary.core.util.MiscUtil;
 import org.geometerplus.zlibrary.core.util.RationalNumber;
@@ -170,9 +173,64 @@ public class Book extends TitledEntity<Book> {
 		return plugin;
 	}
 
+
+	//cnki zhangbin
+	private int myRightHandle = 0;
+	private boolean isOk = true;
+
+	public void close() {
+		if (myRightHandle != 0) {
+			ReaderExLib.ReleaseRights(myRightHandle);
+			myRightHandle = 0;
+		}
+	}
+
+
+	public boolean bookIsOk() {
+		return isOk;
+		//return false;
+	}
+	public void checkDrm() {
+		File.setCached(true);
+		isOk = true;
+		final FormatPlugin plugin = PluginCollection.Instance().getPlugin(File);
+		if (plugin == null) {
+			return ;
+		}
+
+		if (OEBNativePlugin.class.isInstance(plugin)) {
+			if (!((OEBNativePlugin)plugin).getRightsFile(this)) {
+				isOk = false;
+			} else {
+				if (myRightHandle != 0) {
+					if (ReaderExLib.RightsGetErrorCode(myRightHandle) != 0)
+						isOk = false;
+				}
+
+				if(isOk){
+					((OEBNativePlugin)plugin).getHtmlFile(this);
+				}
+			}
+		}
+
+	}
+
+	public int getRightsErrorCode() {
+		if (myRightHandle != 0)
+			return ReaderExLib.RightsGetErrorCode(myRightHandle);
+		else
+			return 0;
+	}
+
+	public void setRightsHandle(int handle) {
+		myRightHandle = handle;
+	}
+
 	void readMetainfo() throws BookReadingException {
 		readMetainfo(getPlugin());
 	}
+
+
 
 	void readMetainfo(FormatPlugin plugin) throws BookReadingException {
 		myEncoding = null;

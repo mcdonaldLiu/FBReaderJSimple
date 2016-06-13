@@ -12,6 +12,10 @@ class ZipInputStream extends InputStream {
 		myParent = parent;
 		myBaseStream = parent.getBaseStream();
 		myBaseStream.setPosition(header.DataOffset);
+
+		// 解密
+		myBaseStream.setDecryptHandle(header);
+
 		myDecompressor = Decompressor.init(myBaseStream, header);
 	}
 
